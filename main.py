@@ -38,7 +38,7 @@ def formatoEcuacion(a, b, c):
 
 
 def graficar(a, b, c):
-    x = np.arange(-20, 20, 0.1)
+    x = np.arange(-5000, 5000, 0.1)
     y = (a * (x ** 2)) + (b * x) + c
 
     pyplot.axhline(0, color="black")
@@ -50,14 +50,14 @@ def graficar(a, b, c):
     # Forma canonica f(x) = a(x-xv)²+yv
 
     if a > 0:
-        pyplot.ylim(yv - 2, yv + 15)
+        pyplot.ylim(yv - 5, yv + 100)
     else:
-        pyplot.ylim(yv - 15, yv + 2)
+        pyplot.ylim(yv - 100, yv + 5)
 
     if 0 < a < 1:
-        pyplot.xlim(xv - 15, xv + 15)
+        pyplot.xlim(xv - 150, xv + 150)
     else:
-        pyplot.xlim(xv - 5, xv + 5)
+        pyplot.xlim(xv - 15, xv + 15)
 
     pyplot.plot(x, y)
     pyplot.plot(xv, yv, marker="o", color="black")
@@ -65,7 +65,8 @@ def graficar(a, b, c):
     pyplot.xlabel('x')
     pyplot.ylabel('y')
 
-    pyplot.title(formatoEcuacion(a, b, c))
+    # pyplot.xlim([-5000,500])
+    pyplot.title("Ecuación de Segundo Grado\n" + formatoEcuacion(a, b, c))
 
     pyplot.savefig("output.png")
     pyplot.show()
@@ -96,15 +97,15 @@ def main():
 
     if disc > 0:
         print("Raices reales: ")
-        print("x1= ", "{:.3f}".format(x1))
-        print("x2= ", "{:.3f}".format(x2))
+        print("x1= ", "{:e}".format(x1))
+        print("x2= ", "{:e}".format(x2))
     elif disc == 0:
         print("Raiz unica")
-        print("x1= ", "{:.3f}".format(x1))
+        print("x1= ", "{:e}".format(x1))
     else:
         print("Raices imaginarias:")
-        print("x1=", "{:.3f}".format(x1.real), "{0:+.3f}".format(x1.imag), "i")
-        print("x2=", "{:.3f}".format(x2))
+        print("x1=", "{:e}".format(x1.real), "{:+e}".format(x1.imag), "i")
+        print("x2=", "{:e}".format(x2))
 
     graficar(a, b, c)
 
