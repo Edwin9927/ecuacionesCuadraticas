@@ -6,7 +6,7 @@ def leerNumero(id):
     try:
         num = float(input("Ingrese el valor de " + id + "\n"))
         if id == "a" and num == 0:
-            raise Exception("a no puede ser cero")
+            raise Exception("El valor de a no puede ser cero")
         return num
     except Exception as e:
         print(str(e))
